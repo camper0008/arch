@@ -6,9 +6,17 @@ read DEVICE
 
 cat <<EOF | fdisk $DEVICE
 d
+
+y
 d
+
+y
 d
+
+y
 d
+
+y
 g
 n
 
@@ -37,7 +45,7 @@ mkswap "${DEVICE}2"
 swapon "${DEVICE}2"
 mkfs.ext4 "${DEVICE}3"
 
-mount "/dev/${DEVICE}3" /mnt # mount partition 3 > /mnt
+mount "${DEVICE}3" /mnt # mount partition 3 > /mnt
 pacstrap /mnt base linux linux-firmware # install core into /mnt
 genfstab -U /mnt >> /mnt/etc/fstab # generate file system table
 arch-chroot /mnt
