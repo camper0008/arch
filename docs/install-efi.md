@@ -11,5 +11,5 @@
 
 1. Download Wget: `pacman -S wget --noconfirm`
 2. Fetch setup script: `wget https://raw.githubusercontent.com/camper0008/arch/main/scripts/setup.sh`
-3. Run setup script: `sh partition.sh`
+3. Run setup script: `sh setup.sh`
 
