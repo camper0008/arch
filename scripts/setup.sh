@@ -53,7 +53,7 @@ rm /tmp/sudoers.tmp
 # grub
 clear
 echo "Setting up grub"
-pacman -S efibootmgr dosfstools os-prober mtools --noconfirm
+pacman -S grub efibootmgr dosfstools os-prober mtools --noconfirm
 clear
 echo "Enter device you used for partitioning: (ex. /dev/sda)"
 read DEVICE
