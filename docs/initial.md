@@ -65,5 +65,3 @@ pacstrap /mnt base linux linux-firmware # install core into /mnt
 genfstab -U /mnt >> /mnt/etc/fstab # generate file system table
 arch-chroot /mnt
 ```
-
-## Setup
