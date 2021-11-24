@@ -1,7 +1,7 @@
 FDISKDISPLAYMATCH="{ isDisk=gsub(/^Disk \/.*$/, "\n"\$0); if (isDisk==1) { print \$0 }; isInfo=gsub(/^(Device|\/).*$/, \$0); if (isInfo==1) { print \"  \",\$0 }; }"          
 echo "Input device to partition (ex. /dev/sda)\n"; echo
 fdisk -l | awk "$FDISKDISPLAYMATCH"
-echo; echo "Device name:"
+echo; echo "Device name (ex. /dev/sda):"
 read DEVICE
 
 cat <<EOF | fdisk $DEVICE
