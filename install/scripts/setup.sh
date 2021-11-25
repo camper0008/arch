@@ -2,6 +2,11 @@
 
 # keyboard
 clear
+echo "Enter device you used for partitioning: (ex. /dev/sda)"
+read DEVICE
+mount "${DEVICE}3" /mnt
+
+clear
 echo "Setting keyboard layout"
 loadkeys dk-latin1
 
@@ -56,8 +61,6 @@ clear
 echo "Setting up grub"
 pacman -S grub efibootmgr dosfstools os-prober mtools --noconfirm
 clear
-echo "Enter device you used for partitioning: (ex. /dev/sda)"
-read DEVICE
 mkdir /boot/EFI
 mount "${DEVICE}1" /boot/EFI
 grub-install --target=x86_64-efi --bootloader-id=grub_uefi --recheck
