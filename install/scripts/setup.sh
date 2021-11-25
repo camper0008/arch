@@ -46,11 +46,9 @@ passwd $USERNAME
 # user groups
 clear
 echo "Setting up user group"
+pacman -S sudo --noconfirm
 usermod -aG wheel,audio,video,optical,storage $USERNAME
-touch /etc/sudoers
-cat $(echo root ALL=(ALL) ALL) >> /etc/sudoers
-cat $(echo %wheel ALL=(ALL) ALL) >> /etc/sudoers
-cat $(echo @includedir /etc/sudoers.d) >> /etc/sudoers
+awk '{ gsub(/^# %wheel ALL=\(ALL\) ALL$/, "%wheel ALL=(ALL) ALL"); print }' /etc/sudoers > /tmp/sudoers.tmp
 cat /tmp/sudoers.tmp > /etc/sudoers
 rm /tmp/sudoers.tmp
 
