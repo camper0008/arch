@@ -2,6 +2,11 @@
 
 # keyboard
 clear
+echo "Enter device you used for partitioning: (ex. /dev/sda)"
+read DEVICE
+mount "${DEVICE}3" /mnt
+
+clear
 echo "Setting keyboard layout"
 loadkeys dk-latin1
 
@@ -47,19 +52,16 @@ passwd $USERNAME
 clear
 echo "Setting up user group"
 usermod -aG wheel,audio,video,optical,storage $USERNAME
-awk '{ gsub(/^# %wheel ALL=\(ALL\) ALL$/, "%wheel ALL=(ALL) ALL"); print }' /etc/sudoers > /tmp/sudoers.tmp
-cat /tmp/sudoers.tmp > /etc/sudoers
-rm /tmp/sudoers.tmp
+cat "root ALL=(ALL) ALL\n" >> /etc/sudoers
+cat "%wheel ALL=(ALL) ALL\n" >> /etc/sudoers
+cat "@includedir /etc/sudoers.d\n" >> /etc/sudoers
 
 # grub
 clear
 echo "Setting up grub"
 pacman -S grub efibootmgr dosfstools os-prober mtools --noconfirm
 clear
-echo "Enter device you used for partitioning: (ex. /dev/sda)"
-read DEVICE
 mkdir /boot/EFI
-mount "${DEVICE}1" /boot/EFI
 grub-install --target=x86_64-efi --bootloader-id=grub_uefi --recheck
 grub-mkconfig -o /boot/grub/grub.cfg
 
