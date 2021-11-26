@@ -15,6 +15,7 @@ sudo pacman -S base-devel --noconfirm
 sudo pacman -S $VIDEO_DRIVER --noconfirm
 sudo pacman -S xorg xorg-xinit --noconfirm
 sudo pacman -S awesome mesa --noconfirm
+sudo pacman -S ttf-fira-code --noconfirm
 
 echo "Creating configuration files"
 cp /etc/X11/xinit/xinitrc ~/.xinitrc
