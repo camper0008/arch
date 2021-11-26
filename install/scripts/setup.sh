@@ -18,6 +18,8 @@ awk '{ gsub(/#en_DK\.UTF-8 UTF-8/, "en_DK.UTF-8 UTF-8"); print }' /etc/locale.ge
 cat /tmp/locale.gen.tmp > /etc/locale.gen
 rm /tmp/locale.gen.tmp
 locale-gen
+echo "LANG=en_DK.UTF-8" > /etc/locale.conf
+echo "KEYMAP=dk-latin1" > /etc/vconsole.conf
 
 # hostname
 clear
