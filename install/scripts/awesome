@@ -33,7 +33,7 @@ cp /etc/X11/xinit/xinitrc ~/.xinitrc
 mkdir -p ~/.config/awesome/
 cp /etc/xdg/awesome/rc.lua ~/.config/awesome/
 
-echo "Installing theme"
+echo "Installing awesome theme"
 cd /usr/share/awesome/themes
 git clone https://github.com/hmix/awesome-wm-nord-theme.git nord
 
@@ -52,6 +52,7 @@ cat /tmp/rc.lua.tmp > ~/rc.lua
 
 echo "Configuring"
 awk '{ gsub(/^((twm)|(xclock)|(xterm)|(exec xterm)).*/, ""); print }' ~/.xinitrc > /tmp/.xinitrc.tmp
+echo "setxkbmap -layout dk" >> /tmp/.xinitrc.tmp
 echo "exec awesome" >> /tmp/.xinitrc.tmp
 cat /tmp/.xinitrc.tmp > ~/.xinitrc
 echo ""
