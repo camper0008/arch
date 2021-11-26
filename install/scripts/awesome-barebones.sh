@@ -24,4 +24,4 @@ cp /etc/xdg/awesome/rc.lua ~/.config/awesome/
 echo "Configuring"
 awk '{ gsub(/^((twm)|(xclock)|(xterm)|(exec xterm)).*/, ""); print }' ~/.xinitrc > /tmp/.xinitrc.tmp
 echo "exec awesome" >> /tmp/.xinitrc.tmp
-echo /tmp/.xinitrc.tmp > 
+echo /tmp/.xinitrc.tmp > ~/.xinitrc
