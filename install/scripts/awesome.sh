@@ -35,25 +35,29 @@ cp /etc/xdg/awesome/rc.lua ~/.config/awesome/
 
 echo "Installing awesome theme"
 cd /usr/share/awesome/themes
-git clone https://github.com/hmix/awesome-wm-nord-theme.git nord
+sudo git clone https://github.com/hmix/awesome-wm-nord-theme.git nord
 
 echo "Editing awesome theme"
-cd
 awk '{ gsub(/default\/theme\.lua/, "nord/theme.lua"); print }' ~/.config/awesome/rc.lua > /tmp/rc.lua.tmp
-cat /tmp/rc.lua.tmp > ~/rc.lua
+cat /tmp/rc.lua.tmp > ~/.config/awesome/rc.lua
 
 echo "Editing awesome default terminal"
 awk '{ gsub(/terminal = "xterm"/, "terminal = \"st\""); print }' ~/.config/awesome/rc.lua > /tmp/rc.lua.tmp
-cat /tmp/rc.lua.tmp > ~/rc.lua
+cat /tmp/rc.lua.tmp > ~/.config/awesome/rc.lua
 
 echo "Editing awesome default editor"
-awk '{ gsub(/editor = os.getenv\("EDITOR"\) or "nano"/, "editor = os.getenv\(\"EDITOR\"\) or \"vim\""); print }' ~/.config/awesome/rc.lua > /tmp/rc.lua.tmp
-cat /tmp/rc.lua.tmp > ~/rc.lua
+awk '{ gsub(/editor = os.getenv\("EDITOR"\) or "nano"/, "editor = os.getenv(\"EDITOR\") or \"vim\""); print }' ~/.config/awesome/rc.lua > /tmp/rc.lua.tmp
+cat /tmp/rc.lua.tmp > ~/.config/awesome/rc.lua
 
-echo "Configuring"
+echo "Configuring xinitrc"
 awk '{ gsub(/^((twm)|(xclock)|(xterm)|(exec xterm)).*/, ""); print }' ~/.xinitrc > /tmp/.xinitrc.tmp
 echo "setxkbmap -layout dk" >> /tmp/.xinitrc.tmp
 echo "exec awesome" >> /tmp/.xinitrc.tmp
 cat /tmp/.xinitrc.tmp > ~/.xinitrc
+
+echo "Configuring vim"
+echo "set rnu nu" > ~/.vimrc
+echo "syntax on" >> ~/.vimrc
+
 echo ""
 echo "Installation finished. Execute 'startx' to run."
