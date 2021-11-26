@@ -13,8 +13,8 @@ echo "Installing required packages"
 # split package installations incase it's unable to find one of them
 sudo pacman -S base-devel --noconfirm
 sudo pacman -S $VIDEO_DRIVER --noconfirm
-sudo pacman -S awesome mesa xorg xorg-xinit --noconfirm
-sudo pacman -S nerd-fonts-mononoki lib32-mesa --noconfirm
+sudo pacman -S xorg xorg-xinit --noconfirm
+sudo pacman -S awesome mesa --noconfirm
 
 echo "Configuring"
 cp /etc/X11/xinit/xinitrc ~/.xinitrc
