@@ -12,7 +12,7 @@ read VIDEO_DRIVER
 echo "Installing required packages"
 sudo pacman -S base-devel --noconfirm
 sudo pacman -S $VIDEO_DRIVER --noconfirm
-sudo pacman -S awesome mesa lib32-mesa xorg xorg-xinit nitrogen picom nerd-fonts-mononoki --noconfirm
+sudo pacman -S awesome mesa xorg xorg-xinit nerd-fonts-mononoki lib32-mesa --noconfirm
 
 echo "Configuring"
 cp /etc/X11/xinit/xinitrc ~/.xinitrc
