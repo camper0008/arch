@@ -18,6 +18,8 @@ awk '{ gsub(/#en_DK\.UTF-8 UTF-8/, "en_DK.UTF-8 UTF-8"); print }' /etc/locale.ge
 cat /tmp/locale.gen.tmp > /etc/locale.gen
 rm /tmp/locale.gen.tmp
 locale-gen
+echo "LANG=en_DK.UTF-8" > /etc/locale.conf
+echo "KEYMAP=dk-latin1" > /etc/vconsole.conf
 
 # hostname
 clear
@@ -46,6 +48,7 @@ passwd $USERNAME
 # user groups
 clear
 echo "Setting up user group"
+pacman -S sudo --noconfirm
 usermod -aG wheel,audio,video,optical,storage $USERNAME
 awk '{ gsub(/^# %wheel ALL=\(ALL\) ALL$/, "%wheel ALL=(ALL) ALL"); print }' /etc/sudoers > /tmp/sudoers.tmp
 cat /tmp/sudoers.tmp > /etc/sudoers
@@ -56,9 +59,9 @@ clear
 echo "Setting up grub"
 pacman -S grub efibootmgr dosfstools os-prober mtools --noconfirm
 clear
+mkdir /boot/EFI
 echo "Enter device you used for partitioning: (ex. /dev/sda)"
 read DEVICE
-mkdir /boot/EFI
 mount "${DEVICE}1" /boot/EFI
 grub-install --target=x86_64-efi --bootloader-id=grub_uefi --recheck
 grub-mkconfig -o /boot/grub/grub.cfg
