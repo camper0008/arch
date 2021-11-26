@@ -26,3 +26,5 @@ echo "Configuring"
 awk '{ gsub(/^((twm)|(xclock)|(xterm)|(exec xterm)).*/, ""); print }' ~/.xinitrc > /tmp/.xinitrc.tmp
 echo "exec awesome" >> /tmp/.xinitrc.tmp
 cat /tmp/.xinitrc.tmp > ~/.xinitrc
+echo ""
+echo "Installation finished. Execute 'startx' to run."
