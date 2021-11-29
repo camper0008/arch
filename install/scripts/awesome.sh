@@ -52,17 +52,20 @@ echo "Editing awesome default editor"
 awk '{ gsub(/editor = os.getenv\("EDITOR"\) or "nano"/, "editor = os.getenv(\"EDITOR\") or \"vim\""); print }' ~/.config/awesome/rc.lua > /tmp/rc.lua.tmp
 cat /tmp/rc.lua.tmp > ~/.config/awesome/rc.lua
 
-echo "Configuring xinitrc"
+echo "Configuring .xinitrc"
 awk '{ gsub(/^((twm)|(xclock)|(xterm)|(exec xterm)).*/, ""); print }' ~/.xinitrc > /tmp/.xinitrc.tmp
 echo "setxkbmap -layout dk" >> /tmp/.xinitrc.tmp
 echo "exec awesome" >> /tmp/.xinitrc.tmp
 cat /tmp/.xinitrc.tmp > ~/.xinitrc
 
-echo "Configuring vim"
+echo "Configuring .vimrc"
 echo "set rnu nu expandtab" > ~/.vimrc
 echo "syntax on" >> ~/.vimrc
 echo "set tabstop=4" >> ~/.vimrc
 echo "set shiftwidth=4" >> ~/.vimrc
+
+echo "Configuring .bashrc"
+curl https://raw.githubusercontent.com/camper0008/arch/stable/install/config/.bashrc > ~/.bashrc
 
 echo ""
 echo "Installation finished. Execute 'startx' to run."
