@@ -56,8 +56,10 @@ echo "exec awesome" >> /tmp/.xinitrc.tmp
 cat /tmp/.xinitrc.tmp > ~/.xinitrc
 
 echo "Configuring vim"
-echo "set rnu nu" > ~/.vimrc
+echo "set rnu nu expandtab" > ~/.vimrc
 echo "syntax on" >> ~/.vimrc
+echo "set tabstop=4" >> ~/.vimrc
+echo "set shiftwidth=4" >> ~/.vimrc
 
 echo ""
 echo "Installation finished. Execute 'startx' to run."
