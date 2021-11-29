@@ -60,8 +60,13 @@ echo "Setting up grub"
 pacman -S grub efibootmgr dosfstools os-prober mtools --noconfirm
 clear
 mkdir /boot/EFI
-echo "Enter device you used for partitioning: (ex. /dev/sda)"
+
+FDISKDISPLAYMATCH="{ isDisk=gsub(/^Disk \/.*$/, "\n"\$0); if (isDisk==1) { print \$0 }; isInfo=gsub(/^(Device|\/).*$/, \$0); if (isInfo==1) { print \"  \",\$0 }; }"          
+echo "Enter device you used for partitioning"
+fdisk -l | awk "$FDISKDISPLAYMATCH"
+echo; echo "Device name (ex. /dev/sda):"
 read DEVICE
+
 mount "${DEVICE}1" /boot/EFI
 grub-install --target=x86_64-efi --bootloader-id=grub_uefi --recheck
 grub-mkconfig -o /boot/grub/grub.cfg
