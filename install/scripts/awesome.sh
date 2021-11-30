@@ -38,7 +38,7 @@ cd /usr/share/awesome/themes
 sudo git clone https://github.com/hmix/awesome-wm-nord-theme.git nord
 
 echo "Editing awesome theme"
-awk '{ gsub(/^theme.font\s+=\s+.*/, "theme.font = \"Fira Code Medium 10\""}' nord/theme.lua > /tmp/theme.lua.tmp
+awk '{ gsub(/^theme\.font\s+=\s+.*/, "theme.font = \"Fira Code Medium 10\""); print }' nord/theme.lua > /tmp/theme.lua.tmp
 cat /tmp/theme.lua.tmp > nord/theme.lua
 
 echo "Editing awesome config"
