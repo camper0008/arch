@@ -41,10 +41,6 @@ echo "Editing awesome theme"
 awk '{ gsub(/^theme.font\s+=\s+.*/, "theme.font = \"Fira Code Medium 10\""}' nord/theme.lua > /tmp/theme.lua.tmp
 cat /tmp/theme.lua.tmp > nord/theme.lua
 
-awk '{ gsub(/default\/theme\.lua/, "nord/theme.lua"); print }' ~/.config/awesome/rc.lua > /tmp/rc.lua.tmp
-cat /tmp/rc.lua.tmp > ~/.config/awesome/rc.lua
-
-
 echo "Editing awesome config"
 awk '{ gsub(/default\/theme\.lua/, "nord/theme.lua"); print }' ~/.config/awesome/rc.lua > /tmp/rc.lua.tmp
 cat /tmp/rc.lua.tmp > ~/.config/awesome/rc.lua
