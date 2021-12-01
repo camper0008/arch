@@ -22,11 +22,9 @@ mkdir build && cd build
 echo "Cloning st"
 git clone https://git.suckless.org/st && cd st
 echo "Replacing config"
-wget https://raw.githubusercontent.com/camper0008/arch/stable/install/config/st-config.h
-rm config.h
-mv st-config.h config.h
+wget -O config.h https://raw.githubusercontent.com/camper0008/arch/stable/install/config/st-config.h
 sudo make clean install
-cd ..
+cd ~
 
 echo "Creating configuration files"
 cp /etc/X11/xinit/xinitrc ~/.xinitrc
