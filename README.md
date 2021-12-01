@@ -1,4 +1,4 @@
 # arch
-Helpful docs and scripts i've written when/for using Arch.
+Helpful stuff i've written for installing, using and developing in Arch.
 
-**Note: `setup.sh` is based on my personal preferences for setup and as such bases your location and layout on danish standards, and installs a few packages i use a lot. Feel free to modify the script to your own liking.**
+**Note: Most scripts are opinionated and based around my preferences, such as awesome.sh, and as such use my preferred themes and Danish locale and keyboard layout. It is up to you to edit these scripts to use your locales instead.**
