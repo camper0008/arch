@@ -29,7 +29,8 @@ cd ~
 echo "Creating configuration files"
 cp /etc/X11/xinit/xinitrc ~/.xinitrc
 mkdir -p ~/.config/awesome/
-cp /etc/xdg/awesome/rc.lua ~/.config/awesome/
+cd ~/.config/awesome
+wget -O rc.lua https://raw.githubusercontent.com/camper0008/arch/stable/install/config/awesome-rc.lua
 
 echo "Installing awesome theme"
 cd /usr/share/awesome/themes
