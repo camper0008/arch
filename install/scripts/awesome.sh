@@ -22,23 +22,23 @@ mkdir build && cd build
 echo "Cloning st"
 git clone https://git.suckless.org/st && cd st
 echo "Replacing config"
-wget https://raw.githubusercontent.com/camper0008/arch/stable/install/config/st-config.h
-rm config.h
-mv st-config.h config.h
+wget -O config.h https://raw.githubusercontent.com/camper0008/arch/stable/install/config/st-config.h
 sudo make clean install
-cd ..
+cd ~
 
 echo "Creating configuration files"
 cp /etc/X11/xinit/xinitrc ~/.xinitrc
 mkdir -p ~/.config/awesome/
-cp /etc/xdg/awesome/rc.lua ~/.config/awesome/
+cd ~/.config/awesome
+wget -O rc.lua https://raw.githubusercontent.com/camper0008/arch/stable/install/config/awesome-rc.lua
 
 echo "Installing awesome theme"
 cd /usr/share/awesome/themes
 sudo git clone https://github.com/hmix/awesome-wm-nord-theme.git nord
 
 echo "Editing awesome theme"
-awk '{ gsub(/^theme.font\s+=\s+.*/, "theme.font = \"Fira Code Medium 10\""}'
+awk '{ gsub(/^theme\.font\s+=\s+.*/, "theme.font = \"Fira Code Medium 10\""); print }' nord/theme.lua > /tmp/theme.lua.tmp
+cat /tmp/theme.lua.tmp > nord/theme.lua
 
 echo "Editing awesome config"
 awk '{ gsub(/default\/theme\.lua/, "nord/theme.lua"); print }' ~/.config/awesome/rc.lua > /tmp/rc.lua.tmp
