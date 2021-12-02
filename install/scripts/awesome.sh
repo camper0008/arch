@@ -67,5 +67,12 @@ echo "set shiftwidth=4" >> ~/.vimrc
 echo "Configuring .bashrc"
 curl https://raw.githubusercontent.com/camper0008/arch/stable/install/config/.bashrc > ~/.bashrc
 
+echo "Installing firefox"
+sudo pacman -S firefox --noconfirm
+
+echo "Configuring firefox"
+mkdir ~/.mozilla/firefox/yerm7r3j.default -p && cd ~/.mozilla/firefox/yerm7r3j.default
+wget https://raw.githubusercontent.com/camper0008/arch/stable/install/config/yerm7r3j.default/times.json
+
 echo ""
 echo "Installation finished. Execute 'startx' to run."
