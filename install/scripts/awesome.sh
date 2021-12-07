@@ -59,12 +59,14 @@ echo "exec awesome" >> /tmp/.xinitrc.tmp
 cat /tmp/.xinitrc.tmp > ~/.xinitrc
 
 echo "Configuring neovim"
-sudo pacman -S neovim --noconfirm
-mkdir -p ~/.config/nvim/ && cd ~/.config/nvim
-curl https://raw.githubusercontent.com/camper0008/arch/stable/install/config/.neovim-init.vim > ~/.config/nvim/init.vim
+curl -fLo ~/neovim-install.sh \
+    https://raw.githubusercontent.com/camper0008/arch/stable/install/scripts/neovim.sh
+sh ~/neovim-install.sh
+rm ~/neovim-install.sh
 
 echo "Configuring .bashrc"
-curl https://raw.githubusercontent.com/camper0008/arch/stable/install/config/.bashrc > ~/.bashrc
+curl -fLo ~/.bashrc \
+    https://raw.githubusercontent.com/camper0008/arch/stable/install/config/.bashrc
 
 echo "Installing firefox"
 sudo pacman -S firefox --noconfirm
