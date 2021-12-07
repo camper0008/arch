@@ -351,10 +351,7 @@ globalkeys = gears.table.join(
                       history_path = awful.util.get_cache_dir() .. "/history_eval"
                     }
                 end,
-                {description = "firefox execute prompt", group = "awesome"}),
-    -- Menubar
-    awful.key({ modkey }, "p", function() menubar.show() end,
-              {description = "show the menubar", group = "launcher"})
+                {description = "firefox execute prompt", group = "awesome"})
 )
 
 clientkeys = gears.table.join(
