@@ -316,7 +316,7 @@ globalkeys = gears.table.join(
     -- Prompt
     awful.key({ modkey },            "r",     function () awful.screen.focused().mypromptbox:run() end,
               {description = "run prompt", group = "launcher"}),
-
+    
     awful.key({ modkey }, "x",
               function ()
                   awful.prompt.run {
@@ -327,9 +327,31 @@ globalkeys = gears.table.join(
                   }
               end,
               {description = "lua execute prompt", group = "awesome"}),
-    -- Menubar
-    awful.key({ modkey }, "p", function() menubar.show() end,
-              {description = "show the menubar", group = "launcher"})
+     -- Prompt
+      awful.key({ modkey },            "r",     function () awful.screen.focused().mypromptbox:run() end,
+                {description = "run prompt", group = "launcher"}),
+ 
+      awful.key({ modkey }, "e",
+            function ()
+                    awful.prompt.run {
+                      prompt       = "Search on firefox: ",
+                      textbox      = awful.screen.focused().mypromptbox.widget,
+                      exe_callback = (function(s) awful.util.spawn('firefox --search "' .. s .. '"') end),
+                      history_path = awful.util.get_cache_dir() .. "/history_eval"
+                    }
+                end,
+                {description = "firefox execute prompt", group = "awesome"}),
+ 
+      awful.key({ modkey, "Shift" }, "e",
+            function ()
+                    awful.prompt.run {
+                      prompt       = "Open url with firefox: ",
+                      textbox      = awful.screen.focused().mypromptbox.widget,
+                      exe_callback = (function(s) awful.util.spawn('firefox --url "' .. s .. '"') end),
+                      history_path = awful.util.get_cache_dir() .. "/history_eval"
+                    }
+                end,
+                {description = "firefox execute prompt", group = "awesome"})
 )
 
 clientkeys = gears.table.join(

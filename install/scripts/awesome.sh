@@ -38,7 +38,7 @@ sudo git clone https://github.com/hmix/awesome-wm-nord-theme.git nord
 
 echo "Editing awesome theme"
 awk '{ gsub(/^theme\.font\s+=\s+.*/, "theme.font = \"Fira Code Medium 10\""); print }' nord/theme.lua > /tmp/theme.lua.tmp
-cat /tmp/theme.lua.tmp > nord/theme.lua
+cat /tmp/theme.lua.tmp | sudo dd of=nord/theme.lua
 
 echo "Editing awesome config"
 awk '{ gsub(/default\/theme\.lua/, "nord/theme.lua"); print }' ~/.config/awesome/rc.lua > /tmp/rc.lua.tmp
@@ -49,7 +49,7 @@ awk '{ gsub(/terminal = "xterm"/, "terminal = \"st\""); print }' ~/.config/aweso
 cat /tmp/rc.lua.tmp > ~/.config/awesome/rc.lua
 
 echo "Editing awesome default editor"
-awk '{ gsub(/editor = os.getenv\("EDITOR"\) or "nano"/, "editor = os.getenv(\"EDITOR\") or \"vim\""); print }' ~/.config/awesome/rc.lua > /tmp/rc.lua.tmp
+awk '{ gsub(/editor = os.getenv\("EDITOR"\) or "nano"/, "editor = os.getenv(\"EDITOR\") or \"nvim\""); print }' ~/.config/awesome/rc.lua > /tmp/rc.lua.tmp
 cat /tmp/rc.lua.tmp > ~/.config/awesome/rc.lua
 
 echo "Configuring .xinitrc"
@@ -58,14 +58,22 @@ echo "setxkbmap -layout dk" >> /tmp/.xinitrc.tmp
 echo "exec awesome" >> /tmp/.xinitrc.tmp
 cat /tmp/.xinitrc.tmp > ~/.xinitrc
 
-echo "Configuring .vimrc"
-echo "set rnu nu expandtab" > ~/.vimrc
-echo "syntax on" >> ~/.vimrc
-echo "set tabstop=4" >> ~/.vimrc
-echo "set shiftwidth=4" >> ~/.vimrc
+echo "Configuring neovim"
+curl -fLo ~/neovim-install.sh \
+    https://raw.githubusercontent.com/camper0008/arch/stable/install/scripts/neovim.sh
+sh ~/neovim-install.sh
+rm ~/neovim-install.sh
 
 echo "Configuring .bashrc"
-curl https://raw.githubusercontent.com/camper0008/arch/stable/install/config/.bashrc > ~/.bashrc
+curl -fLo ~/.bashrc \
+    https://raw.githubusercontent.com/camper0008/arch/stable/install/config/.bashrc
+
+echo "Installing firefox"
+sudo pacman -S firefox --noconfirm
+
+echo "Configuring firefox"
+mkdir ~/.mozilla/firefox/yerm7r3j.default -p && cd ~/.mozilla/firefox/yerm7r3j.default
+wget https://raw.githubusercontent.com/camper0008/arch/stable/install/config/yerm7r3j.default/times.json
 
 echo ""
 echo "Installation finished. Execute 'startx' to run."
