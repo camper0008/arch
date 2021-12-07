@@ -49,7 +49,7 @@ awk '{ gsub(/terminal = "xterm"/, "terminal = \"st\""); print }' ~/.config/aweso
 cat /tmp/rc.lua.tmp > ~/.config/awesome/rc.lua
 
 echo "Editing awesome default editor"
-awk '{ gsub(/editor = os.getenv\("EDITOR"\) or "nano"/, "editor = os.getenv(\"EDITOR\") or \"vim\""); print }' ~/.config/awesome/rc.lua > /tmp/rc.lua.tmp
+awk '{ gsub(/editor = os.getenv\("EDITOR"\) or "nano"/, "editor = os.getenv(\"EDITOR\") or \"nvim\""); print }' ~/.config/awesome/rc.lua > /tmp/rc.lua.tmp
 cat /tmp/rc.lua.tmp > ~/.config/awesome/rc.lua
 
 echo "Configuring .xinitrc"
@@ -58,11 +58,10 @@ echo "setxkbmap -layout dk" >> /tmp/.xinitrc.tmp
 echo "exec awesome" >> /tmp/.xinitrc.tmp
 cat /tmp/.xinitrc.tmp > ~/.xinitrc
 
-echo "Configuring .vimrc"
-echo "set rnu nu expandtab" > ~/.vimrc
-echo "syntax on" >> ~/.vimrc
-echo "set tabstop=4" >> ~/.vimrc
-echo "set shiftwidth=4" >> ~/.vimrc
+echo "Configuring neovim"
+sudo pacman -S neovim --noconfirm
+mkdir -p ~/.config/nvim/ && cd ~/.config/nvim
+curl https://raw.githubusercontent.com/camper0008/arch/stable/install/config/.neovim-init.vim > ~/.config/nvim/init.vim
 
 echo "Configuring .bashrc"
 curl https://raw.githubusercontent.com/camper0008/arch/stable/install/config/.bashrc > ~/.bashrc
