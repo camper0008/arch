@@ -1,5 +1,5 @@
-echo "Downloading neovim"
-sudo pacman -S neovim --noconfirm
+echo "Downloading neovim and xclip"
+sudo pacman -S neovim xclip --noconfirm
 
 echo "Downloading init.vim"
 curl -fLo ~/.config/nvim/init.vim --create-dirs \
