@@ -1,5 +1,9 @@
 #!/bin/sh
 
+FOLDER="~/camper_install_files"
+
+mkdir $FOLDER
+
 echo "What video driver do you want to use? (https://wiki.archlinux.org/title/Xorg#Driver_installation)"
 echo "Supported video drivers:"
 echo "xf86-video-amdgpu (amd)"
@@ -18,13 +22,12 @@ sudo pacman -S awesome mesa --noconfirm
 sudo pacman -S ttf-fira-code --noconfirm
 
 echo "Building simple terminal"
-mkdir build && cd build
+mkdir $FOLDER/build && cd $FOLDER/build
 echo "Cloning st"
 git clone https://git.suckless.org/st && cd st
 echo "Replacing config"
 wget -O config.h https://raw.githubusercontent.com/camper0008/arch/stable/install/config/st-config.h
 sudo make clean install
-cd ~
 
 echo "Creating configuration files"
 cp /etc/X11/xinit/xinitrc ~/.xinitrc
@@ -59,20 +62,21 @@ echo "exec awesome" >> /tmp/.xinitrc.tmp
 cat /tmp/.xinitrc.tmp > ~/.xinitrc
 
 echo "Configuring neovim"
-curl -fLo ~/neovim-install.sh \
+curl -fLo $FOLDER/neovim-install.sh \
     https://raw.githubusercontent.com/camper0008/arch/stable/install/scripts/neovim.sh
-sh ~/neovim-install.sh
-rm ~/neovim-install.sh
+sh $FOLDER/neovim-install.sh
 
 echo "Configuring .bashrc"
 curl -fLo ~/.bashrc \
     https://raw.githubusercontent.com/camper0008/arch/stable/install/config/.bashrc
 
 echo "Configuring firefox"
-curl -fLo ~/firefox-install.sh \
+curl -fLo $FOLDER/firefox-install.sh \
     https://raw.githubusercontent.com/camper0008/arch/stable/install/scripts/firefox.sh
-sh ~/firefox-install.sh
-rm ~/firefox-install.sh
+sh $FOLDER/firefox-install.sh
+
+echo "Removing installation files"
+rm -r $FOLDER
 
 echo ""
 echo "Installation finished. Execute 'startx' to run."
