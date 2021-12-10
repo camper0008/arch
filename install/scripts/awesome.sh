@@ -68,12 +68,11 @@ echo "Configuring .bashrc"
 curl -fLo ~/.bashrc \
     https://raw.githubusercontent.com/camper0008/arch/stable/install/config/.bashrc
 
-echo "Installing firefox"
-sudo pacman -S firefox --noconfirm
-
 echo "Configuring firefox"
-mkdir ~/.mozilla/firefox/yerm7r3j.default -p && cd ~/.mozilla/firefox/yerm7r3j.default
-wget https://raw.githubusercontent.com/camper0008/arch/stable/install/config/yerm7r3j.default/times.json
+curl -fLo ~/firefox-install.sh \
+    https://raw.githubusercontent.com/camper0008/arch/stable/install/scripts/firefox.sh
+sh ~/firefox-install.sh
+rm ~/firefox-install.sh
 
 echo ""
 echo "Installation finished. Execute 'startx' to run."
