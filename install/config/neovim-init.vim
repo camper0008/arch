@@ -10,8 +10,10 @@ set mouse=a
 set clipboard=unnamedplus
 
 call plug#begin()
+    Plug 'rust-lang/rust.vim'
     Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
     Plug 'shaunsingh/nord.nvim'
 call plug#end()
 
+let g:rustfmt_autosave = 1
 colorscheme nord
