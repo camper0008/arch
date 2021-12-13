@@ -1,6 +1,6 @@
 #!/bin/sh
 
-FOLDER="~/camper_install_files"
+FOLDER=~/camper_install_files
 
 mkdir $FOLDER
 
@@ -62,17 +62,14 @@ echo "exec awesome" >> /tmp/.xinitrc.tmp
 cat /tmp/.xinitrc.tmp > ~/.xinitrc
 
 echo "Configuring neovim"
-curl -fLo $FOLDER/neovim-install.sh \
-    https://raw.githubusercontent.com/camper0008/arch/stable/install/scripts/neovim.sh
+wget -O neovim-install.sh -P $FOLDER https://raw.githubusercontent.com/camper0008/arch/stable/install/scripts/neovim.sh
 sh $FOLDER/neovim-install.sh
 
 echo "Configuring .bashrc"
-curl -fLo ~/.bashrc \
-    https://raw.githubusercontent.com/camper0008/arch/stable/install/config/.bashrc
+wget -O .bashrc -P ~ https://raw.githubusercontent.com/camper0008/arch/stable/install/config/.bashrc
 
 echo "Configuring firefox"
-curl -fLo $FOLDER/firefox-install.sh \
-    https://raw.githubusercontent.com/camper0008/arch/stable/install/scripts/firefox.sh
+wget -O firefox-install.sh -P $FOLDER https://raw.githubusercontent.com/camper0008/arch/stable/install/scripts/firefox.sh
 sh $FOLDER/firefox-install.sh
 
 echo "Removing installation files"
