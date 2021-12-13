@@ -73,7 +73,7 @@ wget -O firefox-install.sh -P $FOLDER https://raw.githubusercontent.com/camper00
 sh $FOLDER/firefox-install.sh
 
 echo "Removing installation files"
-rm -r $FOLDER
+rm -rf $FOLDER
 
 echo ""
 echo "Installation finished. Execute 'startx' to run."
