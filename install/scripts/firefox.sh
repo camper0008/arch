@@ -2,7 +2,7 @@ echo "Installing firefox"
 sudo pacman -S firefox --noconfirm
 echo "Downloading configuration"
 echo "Downloading firefox profile"
-mkdir ~/.mozilla/firefox/firefox-profile.tar -p
+mkdir ~/.mozilla/firefox/ -p
 wget -P ~/.mozilla/firefox/ https://raw.githubusercontent.com/camper0008/arch/main/install/config/firefox-profile.tar
 echo "Unzipping folder"
 echo "Installing dependencies"
