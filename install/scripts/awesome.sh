@@ -62,17 +62,21 @@ echo "exec awesome" >> /tmp/.xinitrc.tmp
 cat /tmp/.xinitrc.tmp > ~/.xinitrc
 
 echo "Configuring neovim"
-wget -O neovim-install.sh -P $FOLDER https://raw.githubusercontent.com/camper0008/arch/stable/install/scripts/neovim.sh
+cd $FOLDER
+wget -O neovim-install.sh https://raw.githubusercontent.com/camper0008/arch/stable/install/scripts/neovim.sh
 sh $FOLDER/neovim-install.sh
 
 echo "Configuring .bashrc"
-wget -O .bashrc -P ~ https://raw.githubusercontent.com/camper0008/arch/stable/install/config/.bashrc
+cd ~
+wget -O .bashrc https://raw.githubusercontent.com/camper0008/arch/stable/install/config/.bashrc
 
 echo "Configuring firefox"
-wget -O firefox-install.sh -P $FOLDER https://raw.githubusercontent.com/camper0008/arch/stable/install/scripts/firefox.sh
+cd $FOLDER
+wget -O firefox-install.sh https://raw.githubusercontent.com/camper0008/arch/stable/install/scripts/firefox.sh
 sh $FOLDER/firefox-install.sh
 
 echo "Removing installation files"
+cd ~
 rm -rf $FOLDER
 
 echo ""
