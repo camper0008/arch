@@ -20,6 +20,7 @@ sudo pacman -S $VIDEO_DRIVER --noconfirm
 sudo pacman -S xorg xorg-xinit --noconfirm
 sudo pacman -S awesome mesa --noconfirm
 sudo pacman -S alacritty --noconfirm
+sudo pacman -S unzip --noconfirm
 
 echo "Creating configuration files"
 cp /etc/X11/xinit/xinitrc ~/.xinitrc
@@ -55,7 +56,7 @@ sh $FOLDER/firefox-install.sh
 echo "Installing font"
 cd $FOLDER
 wget -O Red_Hat_Mono.zip https://raw.githubusercontent.com/camper0008/arch/stable/install/config/Red_Hat_Mono.zip
-mkdir -p /usr/local/share/fonts
+sudo mkdir -p /usr/local/share/fonts
 cd /usr/local/share/fonts
 sudo unzip $FOLDER/Red_Hat_Mono.zip
 
