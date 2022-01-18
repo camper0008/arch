@@ -19,15 +19,7 @@ sudo pacman -S base-devel --noconfirm
 sudo pacman -S $VIDEO_DRIVER --noconfirm
 sudo pacman -S xorg xorg-xinit --noconfirm
 sudo pacman -S awesome mesa --noconfirm
-sudo pacman -S ttf-fira-code --noconfirm
-
-echo "Building simple terminal"
-mkdir $FOLDER/build && cd $FOLDER/build
-echo "Cloning st"
-git clone https://git.suckless.org/st && cd st
-echo "Replacing config"
-wget -O config.h https://raw.githubusercontent.com/camper0008/arch/stable/install/config/st-config.h
-sudo make clean install
+sudo pacman -S alacritty --noconfirm
 
 echo "Creating configuration files"
 cp /etc/X11/xinit/xinitrc ~/.xinitrc
@@ -37,23 +29,7 @@ wget -O rc.lua https://raw.githubusercontent.com/camper0008/arch/stable/install/
 
 echo "Installing awesome theme"
 cd /usr/share/awesome/themes
-sudo git clone https://github.com/hmix/awesome-wm-nord-theme.git nord
-
-echo "Editing awesome theme"
-awk '{ gsub(/^theme\.font\s+=\s+.*/, "theme.font = \"Fira Code Medium 10\""); print }' nord/theme.lua > /tmp/theme.lua.tmp
-cat /tmp/theme.lua.tmp | sudo dd of=nord/theme.lua
-
-echo "Editing awesome config"
-awk '{ gsub(/default\/theme\.lua/, "nord/theme.lua"); print }' ~/.config/awesome/rc.lua > /tmp/rc.lua.tmp
-cat /tmp/rc.lua.tmp > ~/.config/awesome/rc.lua
-
-echo "Editing awesome default terminal"
-awk '{ gsub(/terminal = "xterm"/, "terminal = \"st\""); print }' ~/.config/awesome/rc.lua > /tmp/rc.lua.tmp
-cat /tmp/rc.lua.tmp > ~/.config/awesome/rc.lua
-
-echo "Editing awesome default editor"
-awk '{ gsub(/editor = os.getenv\("EDITOR"\) or "nano"/, "editor = os.getenv(\"EDITOR\") or \"nvim\""); print }' ~/.config/awesome/rc.lua > /tmp/rc.lua.tmp
-cat /tmp/rc.lua.tmp > ~/.config/awesome/rc.lua
+sudo git clone https://github.com/camper0008/awesome-wm-nord-theme.git nord
 
 echo "Configuring .xinitrc"
 awk '{ gsub(/^((twm)|(xclock)|(xterm)|(exec xterm)).*/, ""); print }' ~/.xinitrc > /tmp/.xinitrc.tmp
@@ -66,14 +42,22 @@ cd $FOLDER
 wget -O neovim-install.sh https://raw.githubusercontent.com/camper0008/arch/stable/install/scripts/neovim.sh
 sh $FOLDER/neovim-install.sh
 
-echo "Configuring .bashrc"
+echo "Configuring .bashrc and .alacritty.yml"
 cd ~
 wget -O .bashrc https://raw.githubusercontent.com/camper0008/arch/stable/install/config/.bashrc
+wget -O .alacritty.yml https://raw.githubusercontent.com/camper0008/arch/stable/install/config/.alacritty.yml
 
 echo "Configuring firefox"
 cd $FOLDER
 wget -O firefox-install.sh https://raw.githubusercontent.com/camper0008/arch/stable/install/scripts/firefox.sh
 sh $FOLDER/firefox-install.sh
+
+echo "Installing font"
+cd $FOLDER
+wget -O Red_Hat_Mono.zip https://raw.githubusercontent.com/camper0008/arch/stable/install/config/Red_Hat_Mono.zip
+mkdir -p /usr/local/share/fonts
+cd /usr/local/share/fonts
+sudo unzip $FOLDER/Red_Hat_Mono.zip
 
 echo "Removing installation files"
 cd ~
