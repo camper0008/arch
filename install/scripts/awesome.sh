@@ -55,10 +55,10 @@ sh $FOLDER/firefox-install.sh
 
 echo "Installing font"
 cd $FOLDER
-wget -O Red_Hat_Mono.zip https://raw.githubusercontent.com/camper0008/arch/stable/install/config/Red_Hat_Mono.zip
-sudo mkdir -p /usr/local/share/fonts
-cd /usr/local/share/fonts
-sudo unzip $FOLDER/Red_Hat_Mono.zip
+wget -O red_hat_mono.zip https://raw.githubusercontent.com/camper0008/arch/stable/install/config/Red_Hat_Mono.zip
+sudo mkdir -p /usr/local/share/fonts/RedHatMono
+cd /usr/local/share/fonts/RedHatMono
+sudo unzip $FOLDER/red_hat_mono.zip
 
 echo "Removing installation files"
 cd ~
