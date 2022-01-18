@@ -29,10 +29,9 @@ read HOSTNAME
 echo "$HOSTNAME" > /etc/hostname
 
 echo "Setting hosts"
-echo "\
-127.0.0.1       localhost\n\
-::1             localhost\n\
-127.0.1.1       $HOSTNAME.localdomain   $HOSTNAME" > /etc/hosts
+echo "127.0.0.1       localhost" > /etc/hosts
+echo "::1             localhost" >> /etc/hosts
+echo "127.0.1.1       $HOSTNAME.localdomain   $HOSTNAME" >> /etc/hosts
 
 # user
 clear
