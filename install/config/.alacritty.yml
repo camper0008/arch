@@ -9,7 +9,7 @@ font:
 
   italic:
     family: "Red Hat Mono"
-    style: Italic
+    style: Medium Italic
 
   bold_italic:
     family: "Red Hat Mono"
