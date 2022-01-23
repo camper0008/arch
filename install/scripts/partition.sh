@@ -50,4 +50,9 @@ mkfs.ext4 "${DEVICE}3"
 mount "${DEVICE}3" /mnt # mount partition 3 > /mnt
 pacstrap /mnt base linux linux-firmware # install core into /mnt
 genfstab -U /mnt >> /mnt/etc/fstab # generate file system table
+
+# download setup.sh so user dont have to
+wget pap.vin/arch/setup.sh
+mv setup.sh /mnt
+
 arch-chroot /mnt
