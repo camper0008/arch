@@ -53,6 +53,11 @@ cd $FOLDER
 wget -O firefox-install.sh https://raw.githubusercontent.com/camper0008/arch/stable/install/scripts/firefox.sh
 sh $FOLDER/firefox-install.sh
 
+echo "Installing slock"
+cd $FOLDER
+wget -O slock-install.sh https://raw.githubusercontent.com/camper0008/arch/stable/install/scripts/slock.sh
+sh $FOLDER/slock-install.sh
+
 echo "Installing fonts"
 cd $FOLDER
 wget -O red_hat_mono.zip https://raw.githubusercontent.com/camper0008/arch/stable/install/config/Red_Hat_Mono.zip
