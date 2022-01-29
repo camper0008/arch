@@ -8,4 +8,4 @@ sudo pacman -S base-devel --noconfirm
 mkdir font_build && cd font_build
 git clone https://aur.archlinux.org/ttf-twemoji.git
 cd ttf-twemoji
-makepkg -si
+makepkg -si --noconfirm
