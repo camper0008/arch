@@ -12,3 +12,6 @@ PS1='\u \W\n└ \$ '
 alias pacman="sudo pacman"
 alias docker="sudo docker"
 alias docker-compose="sudo docker-compose"
+
+# dynamic title
+PROMPT_COMMAND=${PROMPT_COMMAND:+$PROMPT_COMMAND; }'printf "\033]0;%s | %s\007" "${USER}" "${PWD/#$HOME/\~}"'
