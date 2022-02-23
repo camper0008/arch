@@ -305,18 +305,22 @@ globalkeys = gears.table.join(
               end,
               {description = "restore minimized", group = "client"}),
 
-    -- Prompt
-    awful.key({ modkey },            "r",     function () awful.screen.focused().mypromptbox:run() end,
-              {description = "run prompt", group = "launcher"}),
-    
      -- Prompt
-      awful.key({ modkey },            "r",     function () awful.screen.focused().mypromptbox:run() end,
-                {description = "run prompt", group = "launcher"}),
+      awful.key({ modkey }, "r",
+            function ()
+                    awful.prompt.run {
+                      prompt       = " Run: ",
+                      textbox      = awful.screen.focused().mypromptbox.widget,
+                      exe_callback = (function(s) awful.util.spawn(s) end),
+                      history_path = awful.util.get_cache_dir() .. "/history_eval"
+                    }
+                end,
+                {description = "run prompt", group = "awesome"}),
  
       awful.key({ modkey }, "e",
             function ()
                     awful.prompt.run {
-                      prompt       = "Search on firefox: ",
+                      prompt       = " Search on firefox: ",
                       textbox      = awful.screen.focused().mypromptbox.widget,
                       exe_callback = (function(s) awful.util.spawn('firefox --search "' .. s .. '"') end),
                       history_path = awful.util.get_cache_dir() .. "/history_eval"
@@ -327,7 +331,7 @@ globalkeys = gears.table.join(
       awful.key({ modkey, "Shift" }, "e",
             function ()
                     awful.prompt.run {
-                      prompt       = "Open url with firefox: ",
+                      prompt       = " Open url with firefox: ",
                       textbox      = awful.screen.focused().mypromptbox.widget,
                       exe_callback = (function(s) awful.util.spawn('firefox --url "' .. s .. '"') end),
                       history_path = awful.util.get_cache_dir() .. "/history_eval"
@@ -481,12 +485,12 @@ client.connect_signal("manage", function (c)
     -- Set the windows at the slave,
     -- i.e. put it at the end of others instead of setting it master.
     -- if not awesome.startup then awful.client.setslave(c) end
-
     if awesome.startup
       and not c.size_hints.user_position
       and not c.size_hints.program_position then
         -- Prevent clients from being unreachable after screen count changes.
         awful.placement.no_offscreen(c)
+        c.maximized = false
     end
 end)
 
