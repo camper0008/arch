@@ -427,7 +427,8 @@ awful.rules.rules = {
                      keys = clientkeys,
                      buttons = clientbuttons,
                      screen = awful.screen.preferred,
-                     placement = awful.placement.no_overlap+awful.placement.no_offscreen
+                     placement = awful.placement.no_overlap+awful.placement.no_offscreen,
+                     maximized = false,
      }
     },
 
@@ -461,6 +462,12 @@ awful.rules.rules = {
           "pop-up",       -- e.g. Google Chrome's (detached) Developer Tools.
         }
       }, properties = { floating = true }},
+    
+    --[[ preserved in case you need to fix something using titlebars
+    { rule_any = {type = { "normal", "dialog" }
+      }, properties = { titlebars_enabled = true }
+    },
+    --]]
 
     -- Set Firefox to always map on the tag named "2" on screen 1.
     -- { rule = { class = "Firefox" },
