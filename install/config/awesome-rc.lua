@@ -276,6 +276,8 @@ globalkeys = gears.table.join(
     awful.key({ modkey, "Shift"   }, "q", awesome.quit,
               {description = "quit awesome", group = "awesome"}),
 
+    --[[
+
     awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)          end,
               {description = "increase master width factor", group = "layout"}),
     awful.key({ modkey,           }, "h",     function () awful.tag.incmwfact(-0.05)          end,
@@ -293,6 +295,8 @@ globalkeys = gears.table.join(
     awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(-1)                end,
               {description = "select previous", group = "layout"}),
 
+    --]]
+
     awful.key({ modkey, "Control" }, "n",
               function ()
                   local c = awful.client.restore()
@@ -305,35 +309,45 @@ globalkeys = gears.table.join(
               end,
               {description = "restore minimized", group = "client"}),
 
-    -- Prompt
-    awful.key({ modkey },            "r",     function () awful.screen.focused().mypromptbox:run() end,
-              {description = "run prompt", group = "launcher"}),
-    
      -- Prompt
-      awful.key({ modkey },            "r",     function () awful.screen.focused().mypromptbox:run() end,
-                {description = "run prompt", group = "launcher"}),
+      awful.key({ modkey }, "r",
+            function ()
+                    awful.prompt.run {
+                      prompt       = " Run: ",
+                      textbox      = awful.screen.focused().mypromptbox.widget,
+                      exe_callback = (function(s) awful.util.spawn(s) end),
+                      history_path = awful.util.get_cache_dir() .. "/history_eval"
+                    }
+                end,
+                {description = "run prompt", group = "awesome"}),
  
       awful.key({ modkey }, "e",
             function ()
                     awful.prompt.run {
-                      prompt       = "Search on firefox: ",
+                      prompt       = " Search on firefox: ",
                       textbox      = awful.screen.focused().mypromptbox.widget,
                       exe_callback = (function(s) awful.util.spawn('firefox --search "' .. s .. '"') end),
                       history_path = awful.util.get_cache_dir() .. "/history_eval"
                     }
                 end,
                 {description = "firefox execute prompt", group = "awesome"}),
- 
+
       awful.key({ modkey, "Shift" }, "e",
             function ()
                     awful.prompt.run {
-                      prompt       = "Open url with firefox: ",
+                      prompt       = " Open url with firefox: ",
                       textbox      = awful.screen.focused().mypromptbox.widget,
                       exe_callback = (function(s) awful.util.spawn('firefox --url "' .. s .. '"') end),
                       history_path = awful.util.get_cache_dir() .. "/history_eval"
                     }
                 end,
-                {description = "firefox execute prompt", group = "awesome"})
+                {description = "firefox execute prompt", group = "awesome"}),
+
+      awful.key({ modkey }, "l",
+            function ()
+                      awful.util.spawn(terminal .. ' -e slock')
+                end,
+                {description = "lock screen", group = "awesome"})
 )
 
 clientkeys = gears.table.join(
@@ -427,7 +441,8 @@ awful.rules.rules = {
                      keys = clientkeys,
                      buttons = clientbuttons,
                      screen = awful.screen.preferred,
-                     placement = awful.placement.no_overlap+awful.placement.no_offscreen
+                     placement = awful.placement.no_overlap+awful.placement.no_offscreen,
+                     maximized = false,
      }
     },
 
@@ -461,6 +476,12 @@ awful.rules.rules = {
           "pop-up",       -- e.g. Google Chrome's (detached) Developer Tools.
         }
       }, properties = { floating = true }},
+    
+    --[[ preserved in case you need to fix something using titlebars
+    { rule_any = {type = { "normal", "dialog" }
+      }, properties = { titlebars_enabled = true }
+    },
+    --]]
 
     -- Set Firefox to always map on the tag named "2" on screen 1.
     -- { rule = { class = "Firefox" },
@@ -474,12 +495,12 @@ client.connect_signal("manage", function (c)
     -- Set the windows at the slave,
     -- i.e. put it at the end of others instead of setting it master.
     -- if not awesome.startup then awful.client.setslave(c) end
-
     if awesome.startup
       and not c.size_hints.user_position
       and not c.size_hints.program_position then
         -- Prevent clients from being unreachable after screen count changes.
         awful.placement.no_offscreen(c)
+        c.maximized = false
     end
 end)
 

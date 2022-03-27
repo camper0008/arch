@@ -6,9 +6,15 @@
 [[ $- != *i* ]] && return
 
 alias ls='ls --color=auto'
-PS1='\u \W\n└ \$ '
+
+PS1='\u $(prompt-shortener) \$ '
 
 # aliases
 alias pacman="sudo pacman"
 alias docker="sudo docker"
 alias docker-compose="sudo docker-compose"
+
+export PATH="$PATH:/home/pieter/.yarn/bin:/home/pieter/.local/share/gem/ruby/3.0.0/bin"
+export EDITOR="nvim"
+
+PROMPT_COMMAND=${PROMPT_COMMAND:+$PROMPT_COMMAND; }'printf "\033]0;%s | %s\007" "${USER}" "${PWD/#$HOME/\~}"'
