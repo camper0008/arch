@@ -48,6 +48,11 @@ cd ~
 wget -O .bashrc https://raw.githubusercontent.com/camper0008/arch/stable/install/config/.bashrc
 wget -O .alacritty.yml https://raw.githubusercontent.com/camper0008/arch/stable/install/config/.alacritty.yml
 
+echo "Installing prompt-shortener"
+cd $FOLDER
+wget -O prompt-shortener.sh https://raw.githubusercontent.com/camper0008/arch/stable/install/scripts/prompt-shortener.sh
+sh $FOLDER/prompt-shortener.sh
+
 echo "Configuring firefox"
 cd $FOLDER
 wget -O firefox-install.sh https://raw.githubusercontent.com/camper0008/arch/stable/install/scripts/firefox.sh
@@ -57,6 +62,11 @@ echo "Installing slock"
 cd $FOLDER
 wget -O slock-install.sh https://raw.githubusercontent.com/camper0008/arch/stable/install/scripts/slock.sh
 sh $FOLDER/slock-install.sh
+
+echo "Installing gtk dark theme"
+cd $FOLDER
+wget -O gtk-dark-theme.sh https://raw.githubusercontent.com/camper0008/arch/stable/install/scripts/gtk-dark-theme.sh
+sh $FOLDER/gtk-dark-theme.sh
 
 echo "Installing fonts"
 cd $FOLDER
