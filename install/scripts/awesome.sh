@@ -21,6 +21,7 @@ sudo pacman -S xorg xorg-xinit --noconfirm
 sudo pacman -S awesome mesa --noconfirm
 sudo pacman -S alacritty --noconfirm
 sudo pacman -S unzip --noconfirm
+sudo pacman -S git --noconfirm
 
 echo "Creating configuration files"
 cp /etc/X11/xinit/xinitrc ~/.xinitrc
