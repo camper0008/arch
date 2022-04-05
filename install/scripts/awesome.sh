@@ -21,6 +21,7 @@ sudo pacman -S xorg xorg-xinit --noconfirm
 sudo pacman -S awesome mesa --noconfirm
 sudo pacman -S alacritty --noconfirm
 sudo pacman -S unzip --noconfirm
+sudo pacman -S git --noconfirm
 
 echo "Creating configuration files"
 cp /etc/X11/xinit/xinitrc ~/.xinitrc
@@ -66,6 +67,11 @@ sh $FOLDER/slock-install.sh
 echo "Installing gtk dark theme"
 cd $FOLDER
 wget -O gtk-dark-theme.sh https://raw.githubusercontent.com/camper0008/arch/stable/install/scripts/gtk-dark-theme.sh
+sh $FOLDER/gtk-dark-theme.sh
+
+echo "Installing awesomewm battery widget"
+cd $FOLDER
+wget -O battery-widget-awesome.sh https://raw.githubusercontent.com/camper0008/arch/stable/install/scripts/battery-widget-awesome.sh
 sh $FOLDER/gtk-dark-theme.sh
 
 echo "Installing fonts"
