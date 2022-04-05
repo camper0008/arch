@@ -69,6 +69,11 @@ cd $FOLDER
 wget -O gtk-dark-theme.sh https://raw.githubusercontent.com/camper0008/arch/stable/install/scripts/gtk-dark-theme.sh
 sh $FOLDER/gtk-dark-theme.sh
 
+echo "Installing awesomewm battery widget"
+cd $FOLDER
+wget -O battery-widget-awesome.sh https://raw.githubusercontent.com/camper0008/arch/stable/install/scripts/battery-widget-awesome.sh
+sh $FOLDER/gtk-dark-theme.sh
+
 echo "Installing fonts"
 cd $FOLDER
 wget -O red_hat_mono.zip https://raw.githubusercontent.com/camper0008/arch/stable/install/config/Red_Hat_Mono.zip
