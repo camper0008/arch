@@ -14,7 +14,9 @@ alias pacman="sudo pacman"
 alias docker="sudo docker"
 alias docker-compose="sudo docker-compose"
 
-export PATH="$PATH:/home/pieter/.yarn/bin:/home/pieter/.local/share/gem/ruby/3.0.0/bin"
-export EDITOR="nvim"
+export PATH="$PATH
+:/home/pieter/.yarn/bin
+:/home/pieter/.local/share/gem/ruby/3.0.0/bin
+:/home/pieter/.cargo/bin"
 
-PROMPT_COMMAND=${PROMPT_COMMAND:+$PROMPT_COMMAND; }'printf "\033]0;%s | %s\007" "${USER}" "${PWD/#$HOME/\~}"'
+export EDITOR="nvim"
