@@ -15,18 +15,18 @@ font:
     family: "Red Hat Mono"
     style: Bold Italic
 
-  size: 11.5
+  size: 10
 
 window:
   padding:
-    x: 16
-    y: 16
+    x: 0
+    y: 0
   dynamic_title: true
 
 colors:
   primary:
-    background: '#2e3440'
-    foreground: '#d8dee9'
+    background: '#1c1c1c'
+    foreground: '#d7d7af'
     dim_foreground: '#a5abb6'
   cursor:
     text: '#2e3440'
@@ -35,29 +35,29 @@ colors:
     text: '#2e3440'
     cursor: '#d8dee9'
   selection:
-    text: CellForeground
-    background: '#4c566a'
+    text: '#d7d7af'
+    background: '#875f5f'
   search:
     matches:
       foreground: CellBackground
-      background: '#88c0d0'
+      background: '#878787'
     bar:
-      background: '#434c5e'
-      foreground: '#d8dee9'
+      background: '#af5f5f'
+      foreground: '#121212'
   normal:
-    black: '#3b4252'
-    red: '#bf616a'
+    black: '#1c1c1c' #edited
+    red: '#875f5f' #edited
     green: '#a3be8c'
-    yellow: '#ebcb8b'
-    blue: '#81a1c1'
+    yellow: '#87875f' #edited
+    blue: '#87afaf' #edited
     magenta: '#b48ead'
     cyan: '#88c0d0'
     white: '#e5e9f0'
   bright:
-    black: '#4c566a'
-    red: '#bf616a'
+    black: '#262626' #edited
+    red: '#af5f5f' #edited
     green: '#a3be8c'
-    yellow: '#ebcb8b'
+    yellow: '#af875f' #edited
     blue: '#81a1c1'
     magenta: '#b48ead'
     cyan: '#8fbcbb'

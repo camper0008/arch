@@ -31,7 +31,7 @@ wget -O rc.lua https://raw.githubusercontent.com/camper0008/arch/stable/install/
 
 echo "Installing awesome theme"
 cd /usr/share/awesome/themes
-sudo git clone https://github.com/camper0008/awesome-wm-nord-theme.git nord
+sudo git clone https://github.com/camper0008/awesome-wm-alduin-theme.git nord
 
 echo "Configuring .xinitrc"
 awk '{ gsub(/^((twm)|(xclock)|(xterm)|(exec xterm)).*/, ""); print }' ~/.xinitrc > /tmp/.xinitrc.tmp
