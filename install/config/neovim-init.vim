@@ -14,6 +14,8 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
+tnoremap <Esc> <C-\><C-N>
+
 noremap <silent> <C-Left> :vertical resize +2 <CR>
 noremap <silent> <C-Right> :vertical resize -2 <CR>
 noremap <silent> <C-Up> :resize +2 <CR>
