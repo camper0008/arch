@@ -31,7 +31,7 @@ wget -O rc.lua https://raw.githubusercontent.com/camper0008/arch/stable/install/
 
 echo "Installing awesome theme"
 cd /usr/share/awesome/themes
-sudo git clone https://github.com/camper0008/awesome-wm-alduin-theme.git nord
+sudo git clone https://github.com/camper0008/awesome-wm-alduin-theme.git alduin
 
 echo "Configuring .xinitrc"
 awk '{ gsub(/^((twm)|(xclock)|(xterm)|(exec xterm)).*/, ""); print }' ~/.xinitrc > /tmp/.xinitrc.tmp
@@ -73,7 +73,7 @@ sh $FOLDER/gtk-dark-theme.sh
 echo "Installing awesomewm battery widget"
 cd $FOLDER
 wget -O battery-widget-awesome.sh https://raw.githubusercontent.com/camper0008/arch/stable/install/scripts/battery-widget-awesome.sh
-sh $FOLDER/gtk-dark-theme.sh
+sh $FOLDER/battery-widget-awesome.sh
 
 echo "Installing fonts"
 cd $FOLDER
