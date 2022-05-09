@@ -15,18 +15,18 @@ font:
     family: "Red Hat Mono"
     style: Bold Italic
 
-  size: 11.5
+  size: 12
 
 window:
   padding:
-    x: 16
-    y: 16
+    x: 8
+    y: 8
   dynamic_title: true
 
 colors:
   primary:
-    background: '#2e3440'
-    foreground: '#d8dee9'
+    background: '#1c1c1c'
+    foreground: '#d7d7af'
     dim_foreground: '#a5abb6'
   cursor:
     text: '#2e3440'
@@ -35,33 +35,33 @@ colors:
     text: '#2e3440'
     cursor: '#d8dee9'
   selection:
-    text: CellForeground
-    background: '#4c566a'
+    text: '#d7d7af'
+    background: '#875f5f'
   search:
     matches:
       foreground: CellBackground
-      background: '#88c0d0'
+      background: '#878787'
     bar:
-      background: '#434c5e'
-      foreground: '#d8dee9'
+      background: '#af5f5f'
+      foreground: '#121212'
   normal:
-    black: '#3b4252'
-    red: '#bf616a'
-    green: '#a3be8c'
-    yellow: '#ebcb8b'
-    blue: '#81a1c1'
-    magenta: '#b48ead'
-    cyan: '#88c0d0'
-    white: '#e5e9f0'
+    black: '#1c1c1c' #edited
+    red: '#af5f5f' #edited
+    green: '#af875f' #edited
+    yellow: '#87875f' #edited
+    blue: '#ae5f00' #edited
+    magenta: '#878787' #edited
+    cyan: '#875f5f' #edited
+    white: '#d8dee9' #edited
   bright:
-    black: '#4c566a'
-    red: '#bf616a'
-    green: '#a3be8c'
-    yellow: '#ebcb8b'
-    blue: '#81a1c1'
-    magenta: '#b48ead'
-    cyan: '#8fbcbb'
-    white: '#eceff4'
+    black: '#262626' #edited
+    red: '#af5f5f' #edited
+    green: '#af875f' #edited
+    yellow: '#ffd787' #edited
+    blue: '#ae5f00'
+    magenta: '#878787' #edited
+    cyan: '#875f5f' # edited
+    white: '#d8dee9' #edited
   dim:
     black: '#373e4d'
     red: '#94545d'
@@ -70,4 +70,4 @@ colors:
     blue: '#68809a'
     magenta: '#8c738c'
     cyan: '#6d96a5'
-    white: '#aeb3bb'
+    white: '#d8dee9'
