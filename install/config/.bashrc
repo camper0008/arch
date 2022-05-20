@@ -15,8 +15,8 @@ alias docker="sudo docker"
 alias docker-compose="sudo docker-compose"
 
 export PATH="$PATH
-:/home/pieter/.yarn/bin
-:/home/pieter/.local/share/gem/ruby/3.0.0/bin
-:/home/pieter/.cargo/bin"
+:$HOME/.yarn/bin
+:$HOME/.local/share/gem/ruby/3.0.0/bin
+:$HOME/.cargo/bin"
 
 export EDITOR="nvim"
