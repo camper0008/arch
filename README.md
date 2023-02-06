@@ -1,6 +1,6 @@
 # arch
 
-**Archived since usefulness was outlived after tools such as [archinstall](https://wiki.archlinux.org/title/Archinstall) exist and work better.**
+**Archived since usefulness was outlived after tools such as [archinstall](https://wiki.archlinux.org/title/Archinstall) were created and work better.**
 
 **New configuration exists on [camper0008/conf](https://github.com/camper0008/conf).**
 
